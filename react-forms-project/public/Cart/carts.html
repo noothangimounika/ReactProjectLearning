@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <!-- Shopping Cart HTML Structure -->
+<div id="shopping-cart">
+    <h2>My Cart</h2>
+    <div class="cart-item" data-product-id="101">
+      <p class="product-name">Product 1</p>
+      <span class="product-price">$20</span>
+      <button class="add-to-cart" id="add-to-cart-101">Add to Cart</button>
+    </div>
+    
+    <div class="cart-item" data-product-id="102">
+      <p class="product-name">Product 2</p>
+      <span class="product-price">$30</span>
+      <button class="add-to-cart" id="add-to-cart-102">Add to Cart</button>
+    </div>
+  
+    <button class="checkout" id="checkout-btn">Checkout</button>
+
+    <!-- Google Analytics Tracking Script -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'YOUR_TRACKING_ID');
+</script>
+<script src="cart.js"></script>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support Chat</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-header">
+            <h4>Support Chat</h4>
+            <button id="chat-close-btn">X</button>
+        </div>
+        <div id="chat-body">
+            <div class="chat-message customer">
+                <p>Hi, I need help with my order.</p>
+            </div>
+            <div class="chat-message support">
+                <p>Hello! How can I assist you today?</p>
+            </div>
+        </div>
+        <div id="chat-footer">
+            <input type="text" id="chat-input" placeholder="Type your message here...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script >
+        const chatBody = document.getElementById('chat-body');
+const sendBtn = document.getElementById('send-btn');
+const chatInput = document.getElementById('chat-input');
+
+// Send message when the "Send" button is clicked
+sendBtn.addEventListener('click', function() {
+    sendMessage();
+});
+
+// Optional: Send message when the "Enter" key is pressed
+chatInput.addEventListener('keydown', function(event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+});
+
+function sendMessage() {
+    const message = chatInput.value.trim();
+    if (message !== "") {
+        // Append customer message to chat
+        const newMessage = document.createElement('div');
+        newMessage.classList.add('chat-message', 'customer');
+        newMessage.innerHTML = `<p>${message}</p>`;
+        chatBody.appendChild(newMessage);
+        
+        // Clear input
+        chatInput.value = "";
+
+        // Scroll to the latest message
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        // Simulate a support reply after a short delay
+        setTimeout(function() {
+            const supportReply = document.createElement('div');
+            supportReply.classList.add('chat-message', 'support');
+            supportReply.innerHTML = `<p>Thank you for your message. We're here to help!</p>`;
+            chatBody.appendChild(supportReply);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }, 1000);
+    }
+}
+
+// Close chat box when the "X" button is clicked
+document.getElementById('chat-close-btn').addEventListener('click', function() {
+    document.getElementById('chat-container').style.display = 'none';
+});
+
+    </script>
+</body>
+</html>
